@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crayfish Inn Restaurant - For Sale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .price-range {
+            font-size: 1.8rem;
+            margin: 30px 0;
+            font-weight: 600;
+            color: #ffcc00;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffcc00;
+            color: #333;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background: #ffd84d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #ffcc00;
+            margin: 15px auto;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .features {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .otp-section {
+            background-color: #f0f0f0;
+        }
+
+        .otp-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .otp-table th, .otp-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .otp-table th {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .otp-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .otp-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .highlight {
+            background-color: #fffbcc !important;
+            font-weight: 600;
+        }
+
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            min-width: 250px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .contact-card p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* FIXED WHATSAPP BUTTONS */
+        .whatsapp-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999; /* Increased z-index */
+        }
+
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative; /* Ensure proper stacking */
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* WhatsApp button animation for better visibility */
+        .whatsapp-button::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.3);
+            z-index: -1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .disclaimer {
+            background: #ffcc00;
+            color: #333;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .price-range {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .whatsapp-buttons {
+                bottom: 20px;
+                right: 20px;
+                z-index: 9999; /* Ensure high z-index on mobile */
+            }
+            
+            .whatsapp-button {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .whatsapp-buttons {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .whatsapp-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1 class="logo">Crayfish Inn</h1>
+            <p class="tagline">Premier Beachfront Restaurant & Business Opportunity</p>
+            <div class="price-range">Asking Price: R 1.5M - R 2.8M</div>
+            <p>Long-standing establishment with excellent reputation and prime location</p>
+            <a href="#contact" class="cta-button">Contact Us Now</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Crayfish Inn</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>The Crayfish Inn Restaurant is a long-standing establishment known for its fresh seafood and exceptional beachfront dining experience in Ramsgate, South Africa.</p>
+                    <p>Located at the corner of Marine Drive and Clarence Street, within walking distance of the Ramsgate Whale Deck, this restaurant offers a unique opportunity to own a piece of South African coastal hospitality history.</p>
+                    <p>With an all-weather, outdoor tented terrace with sea views, a relaxed garden-like setting with colorful umbrellas, and an intimate dining room for special occasions, the Crayfish Inn provides diverse dining experiences for all customers.</p>
+                    <p>The restaurant features a wide variety of seafood complemented by a carefully curated wine list, with both indoor and outdoor seating available along with a full bar.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Crayfish Inn Restaurant">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Restaurant Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Beachfront Location</h3>
+                    <p>Prime position with stunning sea views in Ramsgate</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Fresh Seafood</h3>
+                    <p>Renowned for quality seafood and diverse menu</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wine-glass-alt"></i>
+                    </div>
+                    <h3>Full Bar & Wine List</h3>
+                    <p>Comprehensive beverage selection to complement meals</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Multiple Dining Areas</h3>
+                    <p>Tented terrace, garden setting, and intimate dining room</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OTP Section -->
+    <section class="otp-section" id="otp">
+        <div class="container">
+            <h2 class="section-title">Current Offers to Purchase</h2>
+            <div class="disclaimer">
+                <p>All offers to purchase must have supporting funds. The owner reserves the right to decide on the successful bidder.</p>
+                <p>Original purchase price: R 3.6 Million | Expected sale range: R 1.5M - R 2.8M</p>
+            </div>
+            <table class="otp-table">
+                <thead>
+                    <tr>
+                        <th>Bidder Name</th>
+                        <th>Province</th>
+                        <th>Offer Amount (R)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td>Prince Mochage</td>
+                        <td>KwaZulu-Natal</td>
+                        <td>R 2,450,000</td>
+                        <td>Viewing & OTP: 1 Nov 2025</td>
+                    </tr>
+                    <tr>
+                        <td>J***** S*****</td>
+                        <td>Western Cape</td>
+                        <td>R 2,300,000</td>
+                        <td>Submitted</td>
+                    </tr>
+                    <tr>
+                        <td>M***** B*****</td>
+                        <td>Gauteng</td>
+                        <td>R 2,150,000</td>
+                        <td>Submitted</td>
+                    </tr>
+                    <tr>
+                        <td>L***** K*****</td>
+                        <td>Eastern Cape</td>
+                        <td>R 2,000,000</td>
+                        <td>Submitted</td>
+                    </tr>
+                    <tr>
+                        <td>T***** D*****</td>
+                        <td>Mpumalanga</td>
+                        <td>R 1,900,000</td>
+                        <td>Submitted</td>
+                    </tr>
+                    <tr>
+                        <td>R***** P*****</td>
+                        <td>Free State</td>
+                        <td>R 1,800,000</td>
+                        <td>Submitted</td>
+                    </tr>
+                    <tr>
+                        <td>A***** M*****</td>
+                        <td>Limpopo</td>
+                        <td>R 1,750,000</td>
+                        <td>Submitted</td>
+                    </tr>
+                    <tr>
+                        <td>D***** N*****</td>
+                        <td>North West</td>
+                        <td>R 1,650,000</td>
+                        <td>Submitted</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p>For serious inquiries and viewing appointments</p>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>Vincent</h3>
+                    <p><i class="fas fa-phone"></i> 066 256 4831</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Richard</h3>
+                    <p><i class="fas fa-phone"></i> 082 463 1553</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Buttons -->
+    <div class="whatsapp-buttons">
+        <a href="https://wa.me/27662564831?text=Hi%2C%20I%20am%20interested%20in%20the%20restaurant%2C%20could%20you%20please%20send%20me%20more%20information." class="whatsapp-button" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://wa.me/27824631553?text=Hi%2C%20I%20am%20interested%20in%20the%20restaurant%2C%20could%20you%20please%20send%20me%20more%20information." class="whatsapp-button" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Crayfish Inn Restaurant | Ramsgate, South Africa</p>
+            <p>This website and business are for sale</p>
+        </div>
+    </footer>
+</body>
+</html>
