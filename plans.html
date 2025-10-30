@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor Plans - Crayfish Inn Restaurant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #ffcc00;
+        }
+
+        .floor-plans-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #ffcc00;
+            margin: 15px auto;
+        }
+
+        .plans-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #2c3e50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-button:hover {
+            background: #1a252f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .plans-description {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+
+        .contact-section {
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            min-width: 250px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .whatsapp-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+            
+            .pdf-viewer {
+                height: 400px;
+            }
+            
+            .whatsapp-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1 class="logo">Crayfish Inn</h1>
+            <h2 class="page-title">Restaurant Floor Plans</h2>
+            <p>Detailed layout and design of our premier beachfront establishment</p>
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Main Page</a>
+        </div>
+    </header>
+
+    <!-- Floor Plans Section -->
+    <section class="floor-plans-section">
+        <div class="container">
+            <h2 class="section-title">Property Layout & Design</h2>
+            
+            <div class="plans-container">
+                <iframe src="plans.pdf" class="pdf-viewer" title="Crayfish Inn Floor Plans">
+                    Your browser does not support PDFs. <a href="plans.pdf">Download the PDF</a> instead.
+                </iframe>
+                
+                <a href="plans.pdf" download class="download-button">
+                    <i class="fas fa-download"></i> Download Floor Plans (PDF)
+                </a>
+                
+                <div class="plans-description">
+                    <p>These detailed floor plans showcase the efficient layout and design of the Crayfish Inn Restaurant, highlighting the optimal use of space for both customer dining areas and operational facilities.</p>
+                    <p>The plans include measurements, seating arrangements, kitchen layout, bar area, storage spaces, and outdoor dining sections to give potential buyers a comprehensive understanding of the property's structure and potential.</p>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Main Dining Area</h3>
+                    <p>Spacious seating for 80+ guests with ocean views</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Outdoor Terrace</h3>
+                    <p>All-weather tented area with additional seating</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h3>Commercial Kitchen</h3>
+                    <p>Fully equipped for high-volume seafood preparation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <h3>Bar & Storage</h3>
+                    <p>Complete bar setup with ample storage facilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact For Viewing</h2>
+            <p>Schedule a physical inspection of the property</p>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>Vincent</h3>
+                    <p><i class="fas fa-phone"></i> 066 256 4831</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Richard</h3>
+                    <p><i class="fas fa-phone"></i> 082 463 1553</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Buttons -->
+    <div class="whatsapp-buttons">
+        <a href="https://wa.me/27662564831?text=Hi%2C%20I%20am%20interested%20in%20the%20restaurant%20floor%20plans%2C%20could%20you%20please%20send%20me%20more%20information." class="whatsapp-button" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://wa.me/27824631553?text=Hi%2C%20I%20am%20interested%20in%20the%20restaurant%20floor%20plans%2C%20could%20you%20please%20send%20me%20more%20information." class="whatsapp-button" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Crayfish Inn Restaurant | Ramsgate, South Africa</p>
+            <p>This website and business are for sale</p>
+        </div>
+    </footer>
+</body>
+</html>
