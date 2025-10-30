@@ -352,5 +352,16 @@
             <p>This website and business are for sale</p>
         </div>
     </footer>
+    <script>
+        // Ensure WhatsApp buttons are always visible
+        document.addEventListener('DOMContentLoaded', function() {
+            const whatsappButtons = document.querySelector('.whatsapp-buttons');
+            if (whatsappButtons) {
+                whatsappButtons.style.display = 'flex';
+                whatsappButtons.style.visibility = 'visible';
+                whatsappButtons.style.opacity = '1';
+            }
+        });
+    </script>
 </body>
 </html>
