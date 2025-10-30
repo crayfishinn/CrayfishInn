@@ -17,7 +17,6 @@
             background-color: #f8f8f8;
             color: #333;
             line-height: 1.6;
-            padding-bottom: 100px; /* Add padding to prevent content being hidden behind buttons */
         }
 
         .container {
@@ -27,8 +26,8 @@
         }
 
         header {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                        url('header.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -217,12 +216,14 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            min-width: 250px;
+            min-width: 280px;
+            text-align: center;
         }
 
         .contact-card h3 {
             margin-bottom: 15px;
             color: #2c3e50;
+            font-size: 1.5rem;
         }
 
         .contact-card p {
@@ -230,16 +231,39 @@
             margin-bottom: 10px;
         }
 
-        /* COMPLETELY REVISED WHATSAPP BUTTONS */
+        /* WhatsApp buttons in contact cards */
+        .whatsapp-contact-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #25D366;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-contact-button:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Floating WhatsApp buttons */
         .whatsapp-buttons {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            z-index: 10000; /* Very high z-index */
-            transform: translateZ(0); /* Force hardware acceleration */
+            z-index: 1000;
         }
 
         .whatsapp-button {
@@ -252,66 +276,14 @@
             color: white;
             border-radius: 50%;
             font-size: 1.8rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             text-decoration: none;
-            position: relative;
-            border: 2px solid white;
         }
 
         .whatsapp-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        /* WhatsApp button animation for better visibility */
-        .whatsapp-button::after {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border-radius: 50%;
-            background: rgba(37, 211, 102, 0.3);
-            z-index: -1;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(0.95);
-                opacity: 0.7;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.3;
-            }
-            100% {
-                transform: scale(0.95);
-                opacity: 0.7;
-            }
-        }
-
-        /* WhatsApp label for mobile */
-        .whatsapp-label {
-            position: absolute;
-            right: 70px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .whatsapp-button:hover .whatsapp-label {
-            opacity: 1;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         footer {
@@ -319,8 +291,6 @@
             color: white;
             text-align: center;
             padding: 30px 0;
-            position: relative;
-            z-index: 1;
         }
 
         .disclaimer {
@@ -349,35 +319,26 @@
                 font-size: 2rem;
             }
             
-            /* Mobile-specific WhatsApp button styling */
+            .contact-card {
+                min-width: 100%;
+                margin-bottom: 20px;
+            }
+            
             .whatsapp-buttons {
-                bottom: 15px;
-                right: 15px;
-                z-index: 10000;
+                bottom: 20px;
+                right: 20px;
             }
             
-            .whatsapp-button {
-                width: 55px;
-                height: 55px;
-                font-size: 1.6rem;
-            }
-            
-            /* Show labels on mobile on tap */
-            .whatsapp-button:active .whatsapp-label {
-                opacity: 1;
-            }
-            
-            /* Mobile floating action button style */
-            .whatsapp-button {
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            .whatsapp-contact-button {
+                width: 100%;
+                justify-content: center;
             }
         }
 
-        /* Extra small devices */
         @media (max-width: 480px) {
             .whatsapp-buttons {
-                bottom: 10px;
-                right: 10px;
+                bottom: 15px;
+                right: 15px;
             }
             
             .whatsapp-button {
@@ -385,15 +346,6 @@
                 height: 50px;
                 font-size: 1.5rem;
             }
-            
-            body {
-                padding-bottom: 80px; /* Adjust padding for smaller screens */
-            }
-        }
-
-        /* Ensure no other elements can cover the buttons */
-        * {
-            max-width: 100%;
         }
     </style>
 </head>
@@ -406,8 +358,6 @@
             <div class="price-range">Asking Price: R 1.5M - R 2.8M</div>
             <p>Long-standing establishment with excellent reputation and prime location</p>
             <a href="#contact" class="cta-button">Contact Us Now</a>
-            <a href="salesreport2.html" class="cta-button">Market Analysis</a>
-            <a href="plans.html" class="cta-button">Contact Us Now</a>
         </div>
     </header>
 
@@ -423,7 +373,7 @@
                     <p>The restaurant features a wide variety of seafood complemented by a carefully curated wine list, with both indoor and outdoor seating available along with a full bar.</p>
                 </div>
                 <div class="about-image">
-                    <img src="outside.jpeg">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Crayfish Inn Restaurant">
                 </div>
             </div>
         </div>
@@ -546,24 +496,29 @@
                 <div class="contact-card">
                     <h3>Vincent</h3>
                     <p><i class="fas fa-phone"></i> 066 256 4831</p>
+                    <p><i class="fas fa-envelope"></i> vincent@realandproper.co.za</p>
+                    <a href="https://wa.me/27662564831?text=Hi%2C%20I%20am%20interested%20in%20the%20restaurant%2C%20could%20you%20please%20send%20me%20more%20information." class="whatsapp-contact-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Vincent
+                    </a>
                 </div>
                 <div class="contact-card">
                     <h3>Richard</h3>
                     <p><i class="fas fa-phone"></i> 082 463 1553</p>
+                    <a href="https://wa.me/27824631553?text=Hi%2C%20I%20am%20interested%20in%20the%20restaurant%2C%20could%20you%20please%20send%20me%20more%20information." class="whatsapp-contact-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Richard
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WhatsApp Buttons - COMPLETELY REVISED -->
+    <!-- WhatsApp Buttons -->
     <div class="whatsapp-buttons">
         <a href="https://wa.me/27662564831?text=Hi%2C%20I%20am%20interested%20in%20the%20restaurant%2C%20could%20you%20please%20send%20me%20more%20information." class="whatsapp-button" target="_blank">
             <i class="fab fa-whatsapp"></i>
-            <span class="whatsapp-label">Contact Vincent</span>
         </a>
         <a href="https://wa.me/27824631553?text=Hi%2C%20I%20am%20interested%20in%20the%20restaurant%2C%20could%20you%20please%20send%20me%20more%20information." class="whatsapp-button" target="_blank">
             <i class="fab fa-whatsapp"></i>
-            <span class="whatsapp-label">Contact Richard</span>
         </a>
     </div>
 
@@ -575,30 +530,15 @@
         </div>
     </footer>
 
-    <!-- JavaScript to ensure buttons are always visible -->
     <script>
+        // Ensure WhatsApp buttons are always visible
         document.addEventListener('DOMContentLoaded', function() {
-            // Force WhatsApp buttons to be visible
             const whatsappButtons = document.querySelector('.whatsapp-buttons');
             if (whatsappButtons) {
                 whatsappButtons.style.display = 'flex';
                 whatsappButtons.style.visibility = 'visible';
                 whatsappButtons.style.opacity = '1';
             }
-            
-            // Add click handler for mobile to show labels
-            const buttons = document.querySelectorAll('.whatsapp-button');
-            buttons.forEach(button => {
-                button.addEventListener('touchstart', function() {
-                    const label = this.querySelector('.whatsapp-label');
-                    if (label) {
-                        label.style.opacity = '1';
-                        setTimeout(() => {
-                            label.style.opacity = '0';
-                        }, 2000);
-                    }
-                });
-            });
         });
     </script>
 </body>
